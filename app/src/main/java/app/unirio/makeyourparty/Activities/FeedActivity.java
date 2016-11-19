@@ -1,5 +1,6 @@
 package app.unirio.makeyourparty.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,7 @@ public class FeedActivity extends AppCompatActivity{
         int id = item.getItemId();
 
         if(id == R.id.settings){
+            Intent intent = new Intent();
         }
 
         return super.onOptionsItemSelected(item);
