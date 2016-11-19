@@ -1,7 +1,9 @@
-package app.unirio.makeyourparty;
+package app.unirio.makeyourparty.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import app.unirio.makeyourparty.R;
 
 public class MainActivity extends Activity {
 

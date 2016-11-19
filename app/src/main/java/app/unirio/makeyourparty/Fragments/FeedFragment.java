@@ -1,7 +1,5 @@
 package app.unirio.makeyourparty.Fragments;
 
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,7 +12,7 @@ import java.util.List;
 
 import app.unirio.makeyourparty.Adapters.FeedActivityAdapter;
 import app.unirio.makeyourparty.Domain.Event;
-import app.unirio.makeyourparty.FeedActivity;
+import app.unirio.makeyourparty.Activities.FeedActivity;
 import app.unirio.makeyourparty.Interfaces.RecyclerViewOnClickListener;
 import app.unirio.makeyourparty.R;
 

@@ -1,4 +1,4 @@
-package app.unirio.makeyourparty;
+package app.unirio.makeyourparty.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +12,7 @@ import java.util.List;
 
 import app.unirio.makeyourparty.Domain.Event;
 import app.unirio.makeyourparty.Fragments.FeedFragment;
+import app.unirio.makeyourparty.R;
 
 /**
  * Created by Gabriel on 18/11/2016.
