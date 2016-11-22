@@ -65,12 +65,10 @@
                 android:padding="6dp"
                 android:textOff=""
                 android:textOn="" />
-
         </RelativeLayout>
 
 
         <include layout="@layout/item_divider" />
-
 
       </LinearLayout>
 

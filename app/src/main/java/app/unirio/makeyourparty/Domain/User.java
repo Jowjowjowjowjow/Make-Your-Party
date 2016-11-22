@@ -1,11 +1,13 @@
 package app.unirio.makeyourparty.Domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Gabriel on 19/11/2016.
  */
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable {
     private int id;
     private int CPF;
     private String login;

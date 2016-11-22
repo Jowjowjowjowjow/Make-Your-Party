@@ -1,18 +1,23 @@
 package app.unirio.makeyourparty.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import app.unirio.makeyourparty.Domain.User;
 import app.unirio.makeyourparty.R;
 
 /**
@@ -21,42 +26,52 @@ import app.unirio.makeyourparty.R;
 
 public class EditProfileActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private EditText inputName, inputEmail, inputPassword;
-    private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPassword;
+    private EditText inputName, inputEmail, inputPhone;
+    private TextInputLayout inputLayoutName, inputLayoutEmail, inputLayoutPhone;
     private Button btnSignUp;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar_ed);
-       setSupportActionBar(toolbar);
+        getUserInformation();
+        toolbar = (Toolbar) findViewById(R.id.toolbar_edit);
+        toolbar.setTitle(user.getLogin());
+        setSupportActionBar(toolbar);
 
         inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
         inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
-        inputLayoutPassword = (TextInputLayout) findViewById(R.id.input_layout_password);
+        inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
         inputName = (EditText) findViewById(R.id.input_name);
         inputEmail = (EditText) findViewById(R.id.input_email);
-        inputPassword = (EditText) findViewById(R.id.input_password);
-        btnSignUp = (Button) findViewById(R.id.btn_signup);
+        inputPhone = (EditText) findViewById(R.id.input_phone);
 
         inputName.addTextChangedListener(new MyTextWatcher(inputName));
         inputEmail.addTextChangedListener(new MyTextWatcher(inputEmail));
-        inputPassword.addTextChangedListener(new MyTextWatcher(inputPassword));
+        inputPhone.addTextChangedListener(new MyTextWatcher(inputPhone));
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        inputName.setText(user.getName());
+        inputEmail.setText(user.getEmail());
+        inputPhone.setText(user.getPhone());
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_edit);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                submitForm();
+                Snackbar.make(view, "Perfil alterado!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                submitForm(user);
             }
         });
     }
 
-    /**
-     * Validating form
-     */
-    private void submitForm() {
+    private void getUserInformation(){
+        user = (User)getIntent().getSerializableExtra("USER");
+    }
+
+    private void submitForm(User u) {
         if (!validateName()) {
             return;
         }
@@ -65,10 +80,15 @@ public class EditProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if (!validatePassword()) {
+        if (!validatePhone()) {
             return;
         }
 
+        u.setLogin(inputName.getText().toString());
+        u.setPhone(inputPhone.getText().toString());
+        u.setEmail(inputEmail.getText().toString());
+
+        Log.i("EditProfile", u.getLogin() + " " + u.getPhone() + " " + u.getEmail() );
 
     }
 
@@ -98,13 +118,13 @@ public class EditProfileActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean validatePassword() {
-        if (inputPassword.getText().toString().trim().isEmpty()) {
-            inputLayoutPassword.setError(getString(R.string.err_msg_password));
-            requestFocus(inputPassword);
+    private boolean validatePhone() {
+        if (inputPhone.getText().toString().trim().isEmpty()) {
+            inputLayoutPhone.setError(getString(R.string.err_msg_phone));
+            requestFocus(inputPhone);
             return false;
         } else {
-            inputLayoutPassword.setErrorEnabled(false);
+            inputLayoutPhone.setErrorEnabled(false);
         }
 
         return true;
@@ -142,8 +162,8 @@ public class EditProfileActivity extends AppCompatActivity {
                 case R.id.input_email:
                     validateEmail();
                     break;
-                case R.id.input_password:
-                    validatePassword();
+                case R.id.input_phone:
+                    validatePhone();
                     break;
             }
         }
