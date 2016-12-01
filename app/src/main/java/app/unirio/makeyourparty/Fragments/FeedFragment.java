@@ -11,9 +11,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.unirio.makeyourparty.Adapters.FeedActivityAdapter;
+import app.unirio.makeyourparty.Adapters.FeedFragmentAdapter;
 import app.unirio.makeyourparty.Domain.Event;
-import app.unirio.makeyourparty.Activities.FeedActivity;
 import app.unirio.makeyourparty.Interfaces.RecyclerViewOnClickListener;
 import app.unirio.makeyourparty.R;
 
@@ -51,7 +50,7 @@ public class FeedFragment extends Fragment implements RecyclerViewOnClickListene
         mRecyclerView.setLayoutManager(llm);
 
         mList = getEventList();
-        FeedActivityAdapter adapter = new FeedActivityAdapter(getActivity(), mList);
+        FeedFragmentAdapter adapter = new FeedFragmentAdapter(getActivity(), mList);
         adapter.setRecyclerViewOnClickListener(this);
         mRecyclerView.setAdapter( adapter );
 
@@ -59,12 +58,12 @@ public class FeedFragment extends Fragment implements RecyclerViewOnClickListene
     }
 
     public List<Event> getEventList() {
-        String[] name = new String[]{"FESTA 1", "FESTA 2", "FESTA 3"};
-        String[] date = new String[]{"19-NOV", "20-NOV", "3-DEZ"};
-        String[] description = new String[]{"DESCRIÇÃO 1", "DESCRIÇÃO 2", "DESCRIÇÃO 3"};
-        String[] city = new String[]{"CIDADE 1", "CIDADE 2", "CIDADE 3"};
-        String[] adress = new String []{"ENDEREÇO 1", "ENDEREÇO 2", "ENDEREÇO 3"};
-        int[] photo = new int[]{R.drawable.login_bg, R.drawable.login_bg, R.drawable.login_bg};
+        String[] name = new String[]{"FESTA 1", "FESTA 2", "FESTA 3", "FESTA 4"};
+        String[] date = new String[]{"19-NOV", "20-NOV", "3-DEZ", "20-DEZ"};
+        String[] description = new String[]{"DESCRIÇÃO 1", "DESCRIÇÃO 2", "DESCRIÇÃO 3", "DESCRIÇÃO 4"};
+        String[] city = new String[]{"CIDADE 1", "CIDADE 2", "CIDADE 3", "CIDADE 4"};
+        String[] adress = new String []{"ENDEREÇO 1", "ENDEREÇO 2", "ENDEREÇO 3", "ENDEREÇO 4"};
+        int[] photo = new int[]{R.drawable.login_bg, R.drawable.login_bg, R.drawable.login_bg, R.drawable.login_bg};
 
         List<Event> listAux = new ArrayList<>();
 

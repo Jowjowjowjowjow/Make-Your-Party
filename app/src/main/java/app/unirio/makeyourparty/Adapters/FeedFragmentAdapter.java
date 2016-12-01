@@ -2,7 +2,6 @@ package app.unirio.makeyourparty.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.EventLog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +18,14 @@ import app.unirio.makeyourparty.R;
 /**
  * Created by Gabriel on 18/11/2016.
  */
-public class FeedActivityAdapter extends RecyclerView.Adapter<FeedActivityAdapter.MyViewHolder> {
+public class FeedFragmentAdapter extends RecyclerView.Adapter<FeedFragmentAdapter.MyViewHolder> {
 
     private List<Event> mList;
     private LayoutInflater mLayoutInflater;
     private RecyclerViewOnClickListener mRecyclerViewOnClickListener;
 
 
-    public FeedActivityAdapter(Context c, List<Event> l){
+    public FeedFragmentAdapter(Context c, List<Event> l){
         mList = l;
         mLayoutInflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -43,8 +42,6 @@ public class FeedActivityAdapter extends RecyclerView.Adapter<FeedActivityAdapte
     @Override
     public void onBindViewHolder(MyViewHolder myViewHolder, int position) {
         Log.i("LOG", "onBindViewHolder()");
-
-
         myViewHolder.imageViewEvent.setImageResource(mList.get(position).getPhoto());
         myViewHolder.textViewName.setText(mList.get(position).getName());
         myViewHolder.textViewDescription.setText( mList.get(position).getDescription());

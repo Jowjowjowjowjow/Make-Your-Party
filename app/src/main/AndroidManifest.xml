@@ -15,7 +15,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activities.FeedActivity"></activity>
         <activity android:name=".Activities.EditProfileActivity"> </activity>
     </application>
 

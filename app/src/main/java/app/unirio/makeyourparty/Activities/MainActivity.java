@@ -1,32 +1,64 @@
 package app.unirio.makeyourparty.Activities;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
 
 import app.unirio.makeyourparty.Fragments.FeedFragment;
+import app.unirio.makeyourparty.Fragments.ProfileFragment;
 import app.unirio.makeyourparty.R;
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar mToolbar;
+    //private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.tb_main);
-        setSupportActionBar(mToolbar);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.rl_fragment_container, new FeedFragment());
+        fragmentTransaction.commit();
 
-        FeedFragment feedFragment = (FeedFragment) getSupportFragmentManager().findFragmentByTag("feedFragment");
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
 
-        if(feedFragment == null) {
-            feedFragment = new FeedFragment();
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_events:
+                                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.rl_fragment_container, new FeedFragment());
+                                fragmentTransaction.commit();
+                                break;
+                            case R.id.action_favorities:
+                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.rl_fragment_container, new ProfileFragment().newInstance());
+                                ft.commit();
+                                break;
+                            case R.id.action_search:
+
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
+        /*ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("profileFragment");
+
+        if(profileFragment == null) {
+            profileFragment = new ProfileFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.rl_fragment_container, feedFragment, "feedFragment");
+            fragmentTransaction.replace(R.id.rl_fragment_container, profileFragment, "profileFragment");
             fragmentTransaction.commit();
-        }
+        }*/
     }
 }
