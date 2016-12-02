@@ -34,7 +34,7 @@ public class FeedFragmentAdapter extends RecyclerView.Adapter<FeedFragmentAdapte
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Log.i("LOG", "onCreateViewHolder()");
-        View v = mLayoutInflater.inflate(R.layout.item_activitiy_feed_card, viewGroup, false);
+        View v = mLayoutInflater.inflate(R.layout.item_fragment_feed_card, viewGroup, false);
         MyViewHolder mvh = new MyViewHolder(v);
         return mvh;
     }

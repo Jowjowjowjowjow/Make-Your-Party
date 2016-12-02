@@ -3,10 +3,8 @@ package app.unirio.makeyourparty.Activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 
@@ -40,25 +38,16 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction.commit();
                                 break;
                             case R.id.action_favorities:
-                                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.rl_fragment_container, new ProfileFragment().newInstance());
-                                ft.commit();
-                                break;
-                            case R.id.action_search:
 
+                                break;
+                            case R.id.action_profile:
+                                FragmentTransaction f = getSupportFragmentManager().beginTransaction();
+                                f.replace(R.id.rl_fragment_container, new ProfileFragment());
+                                f.commit();
                                 break;
                         }
                         return false;
                     }
                 });
-
-        /*ProfileFragment profileFragment = (ProfileFragment) getSupportFragmentManager().findFragmentByTag("profileFragment");
-
-        if(profileFragment == null) {
-            profileFragment = new ProfileFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.rl_fragment_container, profileFragment, "profileFragment");
-            fragmentTransaction.commit();
-        }*/
     }
 }
