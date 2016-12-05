@@ -2,6 +2,7 @@ package app.unirio.makeyourparty.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -77,5 +78,14 @@ public class FeedFragment extends Fragment implements RecyclerViewOnClickListene
     @Override
     public void onClickListener(View view, int position) {
         Event event = mList.get(position);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("EVENT_KEY", event);
+        EventFragment eventFragment = new EventFragment();
+        eventFragment.setArguments(bundle);
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.rl_fragment_container, eventFragment);
+        fragmentTransaction.commit();
+
     }
 }

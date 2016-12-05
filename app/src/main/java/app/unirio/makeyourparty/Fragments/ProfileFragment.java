@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -45,6 +46,7 @@ public class ProfileFragment extends Fragment implements AppBarLayout.OnOffsetCh
     private Toolbar toolbar;
     private TextView textviewTitle;
     private SimpleDraweeView avatar;
+    private FloatingActionButton fab;
 
     private void findViews(View view) {
         appbar = (AppBarLayout)view.findViewById( R.id.appbar );
@@ -55,6 +57,7 @@ public class ProfileFragment extends Fragment implements AppBarLayout.OnOffsetCh
         toolbar = (Toolbar)view.findViewById( R.id.toolbar );
         textviewTitle = (TextView)view.findViewById( R.id.textview_title );
         avatar = (SimpleDraweeView)view.findViewById(R.id.avatar);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
     }
 
 
@@ -75,6 +78,21 @@ public class ProfileFragment extends Fragment implements AppBarLayout.OnOffsetCh
         coverImage.setImageResource(R.drawable.cover);
 
         setInformation(view, getUserInformation());
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                args.putSerializable("USER_KEY", getUserInformation());
+
+                EditProfileFragment editProfileFragment = new EditProfileFragment();
+                editProfileFragment.setArguments(args);
+
+                /*FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.rl_fragment_container, editProfileFragment );
+                fragmentTransaction.commit();*/
+            }
+        });
 
         return view;
     }

@@ -1,6 +1,7 @@
 package app.unirio.makeyourparty.Adapters;
 
 import android.content.Context;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,6 @@ import java.util.List;
 import app.unirio.makeyourparty.Domain.Event;
 import app.unirio.makeyourparty.Interfaces.RecyclerViewOnClickListener;
 import app.unirio.makeyourparty.R;
-
 /**
  * Created by Gabriel on 18/11/2016.
  */
@@ -87,6 +87,7 @@ public class FeedFragmentAdapter extends RecyclerView.Adapter<FeedFragmentAdapte
         public void onClick(View v) {
             if(mRecyclerViewOnClickListener != null) {
                 mRecyclerViewOnClickListener.onClickListener(v, getPosition());
+
             }
         }
     }

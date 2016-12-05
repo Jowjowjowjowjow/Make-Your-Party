@@ -1,11 +1,14 @@
 package app.unirio.makeyourparty.Domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Gabriel on 18/11/2016.
  */
-public class Event {
+@SuppressWarnings("serial")
+public class Event implements Serializable {
+
     private int photo;
     private String name;
     private String date;

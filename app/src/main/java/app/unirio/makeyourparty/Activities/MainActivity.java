@@ -3,11 +3,16 @@ package app.unirio.makeyourparty.Activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 
+import app.unirio.makeyourparty.Domain.User;
+import app.unirio.makeyourparty.Extras.Connection;
+import app.unirio.makeyourparty.Fragments.EventFragment;
 import app.unirio.makeyourparty.Fragments.FeedFragment;
 import app.unirio.makeyourparty.Fragments.ProfileFragment;
 import app.unirio.makeyourparty.R;
@@ -19,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.rl_fragment_container, new FeedFragment());
@@ -37,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction.replace(R.id.rl_fragment_container, new FeedFragment());
                                 fragmentTransaction.commit();
                                 break;
-                            case R.id.action_favorities:
+                            case R.id.action_services:
 
                                 break;
                             case R.id.action_profile:
                                 FragmentTransaction f = getSupportFragmentManager().beginTransaction();
                                 f.replace(R.id.rl_fragment_container, new ProfileFragment());
                                 f.commit();
+                                break;
+                            case R.id.action_explore:
+
+                                break;
+                            case R.id.action_search:
+
                                 break;
                         }
                         return false;
