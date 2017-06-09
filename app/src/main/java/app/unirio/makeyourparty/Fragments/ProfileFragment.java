@@ -126,7 +126,7 @@ public class ProfileFragment extends Fragment implements AppBarLayout.OnOffsetCh
         tv_username.setText(user.getName());
         tv_jobRole.setText(user.getState());
         tv_number.setText(user.getPhone());
-        tv_adress.setText(user.getAdress());
+        tv_adress.setText(user.getAddress());
         tv_email.setText(user.getSite());
         tv_state.setText(user.getState());
 

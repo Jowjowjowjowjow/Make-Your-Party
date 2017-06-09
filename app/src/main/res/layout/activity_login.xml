@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.unirio.makeyourparty.Activities.Login">
+
+
+    <EditText
+        android:hint="Email"
+        android:textColorHint="@color/colorAccent"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:inputType="textEmailAddress"
+        />
+
+    <EditText
+        android:inputType="textPassword"
+        android:hint="Senha"
+        android:textColorHint="@color/colorAccent"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextPassword"
+        />
+
+    <Button
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="3dp"
+        android:text="Fazer login"
+        android:id="@+id/buttonFazerLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Não tem cadastro? Clique aqui"/>
+
+</LinearLayout>

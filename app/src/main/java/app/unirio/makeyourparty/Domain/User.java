@@ -15,22 +15,36 @@ public class User implements Serializable {
     private String password;
     private String name;
     private String phone;
-    private String adress;
+    private String address;
     private String state;
     private String city;
     private String site;
     private Date bornDate;
 
     public User(){}
+
+
+    /**
+     * Retirei ID e Login do construtor do BD porque o id será gerado pelo próprio banco do firebase, e o firebase só permite login com email/senha
+     * ou com google, facebook e etc...
+     * @param CPF
+     * @param email
+     * @param password
+     * @param name
+     * @param address
+     * @param phone
+     * @param city
+     * @param state
+     * @param site
+     * @param bornDate
+     */
     //CONSTRUTOR PARA O BD
-    public User(int id, int CPF, String login, String email, String password, String name, String adress, String phone, String city, String state, String site, Date bornDate) {
-        this.id = id;
+    public User(int CPF, String email, String password, String name, String address, String phone, String city, String state, String site, Date bornDate) {
         this.CPF = CPF;
-        this.login = login;
         this.email = email;
         this.password = password;
         this.name = name;
-        this.adress = adress;
+        this.address = address;
         this.phone = phone;
         this.city = city;
         this.state = state;
@@ -38,10 +52,10 @@ public class User implements Serializable {
         this.bornDate = bornDate;
     }
     //CONSTRUTOR PARA USO INTERNO
-    public User(String name, String phone, String adress, String state, String city, String site, String login) {
+    public User(String name, String phone, String address, String state, String city, String site, String login) {
         this.name = name;
         this.phone = phone;
-        this.adress = adress;
+        this.address = address;
         this.state = state;
         this.city = city;
         this.site = site;
@@ -104,12 +118,12 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
 
     public String getState() {

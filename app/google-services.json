@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "349116740081",
+    "firebase_url": "https://make-your-party.firebaseio.com",
+    "project_id": "make-your-party",
+    "storage_bucket": "make-your-party.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349116740081:android:4eea8a63531c1215",
+        "android_client_info": {
+          "package_name": "app.unirio.makeyourparty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349116740081-8ps1vgpts55ojsniv11bqvht7fri83th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkYaE1SBnTtlXFYlR0XRSZp8AroUGVjfY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
