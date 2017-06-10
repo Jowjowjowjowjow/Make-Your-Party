@@ -1,15 +1,22 @@
 package app.unirio.makeyourparty.Domain;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import app.unirio.makeyourparty.DAO.ConfiguracaoFirebase;
 
 /**
  * Created by Gabriel on 19/11/2016.
  */
 @SuppressWarnings("serial")
 public class User implements Serializable {
-    private int id;
-    private int CPF;
+    private String id;
+    private long CPF;
     private String login;
     private String email;
     private String password;
@@ -19,7 +26,7 @@ public class User implements Serializable {
     private String state;
     private String city;
     private String site;
-    private Date bornDate;
+    private Date birthDate;
 
     public User(){}
 
@@ -39,7 +46,7 @@ public class User implements Serializable {
      * @param bornDate
      */
     //CONSTRUTOR PARA O BD
-    public User(int CPF, String email, String password, String name, String address, String phone, String city, String state, String site, Date bornDate) {
+    public User(long CPF, String email, String password, String name, String address, String phone, String city, String state, String site, Date birthDate) {
         this.CPF = CPF;
         this.email = email;
         this.password = password;
@@ -49,7 +56,7 @@ public class User implements Serializable {
         this.city = city;
         this.state = state;
         this.site = site;
-        this.bornDate = bornDate;
+        this.birthDate = birthDate;
     }
     //CONSTRUTOR PARA USO INTERNO
     public User(String name, String phone, String address, String state, String city, String site, String login) {
@@ -62,19 +69,42 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public int getId() {
+    public void save(){
+        DatabaseReference firebaseReference = ConfiguracaoFirebase.getFirebase();
+        firebaseReference.child("Users").child(String.valueOf(getId())).setValue(this);
+    }
+
+    @Exclude
+    public Map<String, Object> toMap(){
+        HashMap<String, Object> hashMapUser = new HashMap<>();
+        hashMapUser.put("Id", getId());
+        hashMapUser.put("CPF", getCPF());
+        hashMapUser.put("Email", getEmail());
+        hashMapUser.put("Password", getPassword());
+        hashMapUser.put("Name", getName());
+        hashMapUser.put("Address", getAddress());
+        hashMapUser.put("Phone", getPhone());
+        hashMapUser.put("City", getCity());
+        hashMapUser.put("State", getState());
+        hashMapUser.put("Site", getSite());
+        hashMapUser.put("BirthDate", getBirthDate());
+
+        return hashMapUser;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getCPF() {
+    public long getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(long CPF) {
         this.CPF = CPF;
     }
 
@@ -150,11 +180,11 @@ public class User implements Serializable {
         this.site = site;
     }
 
-    public Date getBornDate() {
-        return bornDate;
+    public Date getBirthDate() {
+        return birthDate;
     }
 
-    public void setBornDate(Date bornDate) {
-        this.bornDate = bornDate;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 }

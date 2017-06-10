@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 /**
  * Classe responsavel por verificar se já há algum usuário logado e mantê-lo logado.
  */
-public class Preferencies {
+public class Preferences {
 
     private Context context;
     private SharedPreferences preferences;
@@ -21,11 +21,10 @@ public class Preferencies {
     private final String ID_KEY = "Idetify user logged in";
     private final String NAME_KEY = "User logged name";
 
-    public Preferencies(Context context){
+    public Preferences(Context context){
         this.context = context;
         preferences = context.getSharedPreferences(FILE_NAME, MODE);
         editor = preferences.edit();
-
     }
 
     public void saveUserPreferences(String UserId, String UserName){

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.unirio.makeyourparty.Activities.SignInActivity">
+    tools:context="app.unirio.makeyourparty.Activities.SignUpActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -89,13 +89,13 @@
                 android:inputType="number"
                 android:maxLength="11"
                 android:id="@+id/editTextCpfRegister"
-                android:hint="Email"/>
+                android:hint="CPF"/>
             <EditText
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="date"
-                android:id="@+id/editTextBornDateRegister"
+                android:id="@+id/editTextBirthDateRegister"
                 android:hint="Data de Nascimento"/>
 
             <RelativeLayout

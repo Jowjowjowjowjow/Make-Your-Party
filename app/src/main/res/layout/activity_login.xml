@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
        />
     <TextView
+        android:id="@+id/textView_SignUp"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"

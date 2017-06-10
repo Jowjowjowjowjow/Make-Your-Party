@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class Login extends AppCompatActivity {
 
     private EditText editTextEmail;
     private EditText editTextPassword;
+    private TextView textViewAbreCadastro;
     private Button btnLogin;
     private FirebaseAuth autentication;
     private User user;
@@ -34,6 +36,7 @@ public class Login extends AppCompatActivity {
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        textViewAbreCadastro = (TextView) findViewById(R.id.textView_SignUp);
         btnLogin = (Button) findViewById(R.id.buttonFazerLogin);
 
         //Click listener do botão "Fazer login"
@@ -45,21 +48,26 @@ public class Login extends AppCompatActivity {
                     user = new User();
                     user.setEmail(editTextEmail.getText().toString());
                     user.setPassword(editTextPassword.getText().toString());
-                    validarLogin();
-
+                    validateLogin();
                 }else{
                     Toast.makeText(Login.this,"Preencha os campos de e-mail e senha!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        textViewAbreCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSignUp();
+            }
+        });
     }
 
-    private void validarLogin(){
+    private void validateLogin(){
         autentication = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autentication.signInWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
                 if(task.isSuccessful()){
                     openMainActivity();
                     Toast.makeText(Login.this,"Login efetuado com sucesso", Toast.LENGTH_SHORT).show();
@@ -73,6 +81,11 @@ public class Login extends AppCompatActivity {
     public void openMainActivity(){
         Intent intentOpenMainActivity = new Intent(Login.this, MainActivity.class);
         startActivity(intentOpenMainActivity);
+    }
+
+    public void openSignUp(){
+        Intent intent = new Intent(Login.this, SignUpActivity.class);
+        startActivity(intent);
     }
 }
 
