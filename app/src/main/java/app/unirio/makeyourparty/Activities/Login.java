@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import app.unirio.makeyourparty.DAO.ConfiguracaoFirebase;
 import app.unirio.makeyourparty.Domain.User;
 import app.unirio.makeyourparty.R;
+import app.unirio.makeyourparty.TesteSugaBancoActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private FirebaseAuth autentication;
     private User user;
+    private TextView textViewSugaBanco;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,15 @@ public class Login extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         textViewAbreCadastro = (TextView) findViewById(R.id.textView_SignUp);
         btnLogin = (Button) findViewById(R.id.buttonFazerLogin);
+        textViewSugaBanco = (TextView) findViewById(R.id.textView_SugaBanco);
+
+        textViewSugaBanco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, TesteSugaBancoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Click listener do botão "Fazer login"
         btnLogin.setOnClickListener(new View.OnClickListener() {

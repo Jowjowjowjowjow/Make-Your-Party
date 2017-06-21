@@ -48,4 +48,13 @@
         android:textSize="15sp"
         android:text="Não tem cadastro? Clique aqui"/>
 
+    <TextView
+        android:id="@+id/textView_SugaBanco"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Ver dados"/>
+
 </LinearLayout>
